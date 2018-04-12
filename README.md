@@ -6,10 +6,11 @@ Modify your code to take the following command line arguments:
 * Yearly salary during the first year
 * Percentage of the salary that should be put into a retirement fund
 * Number of remaining to retirement
+* Growth rate 
 
-For Part 1 you can set the growth rate to an arbitrary constant. 
+If the user do not provide any command line arguments, or if the arguments are incorrect, the program should display usage information.
 
-## Part 2: Variable groeth rate
-Load the historical growth rate date from the provided file `growthRate.txt`.
+## Part 2: Variable growth rate
+Modify program to use the annual investment growth rate data in the provided `growthRate.txt` file. 
 
 ## Part 3: 
