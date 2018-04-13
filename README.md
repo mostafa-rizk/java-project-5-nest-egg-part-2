@@ -35,7 +35,3 @@ When the program runs it should first calculate the growth of the investment for
 Add the expenses and the number of years of retirement as command line arguments to your code. Don't forget to update the usage instructions.
 
 Note that if the retirement fund balance becomes negative, expenditures should continue to be subtracted, and the growth rate comes to represent the interest rate on the debt (i.e. the formulas in the above table still apply).
-
-## Part 4: 
-
-
