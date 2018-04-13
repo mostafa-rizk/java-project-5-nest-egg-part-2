@@ -18,3 +18,9 @@ The program should print out, the size of the retirement account at the end of e
 `<Year> <Value of investment> <Annual growth>`
 
 ## Part 3:  
+Of course, once you retire you will want to be able to withdraw some amount of money each year for living expenses. You can use your previous code to get the size of your retirement fund when you stop working. Now we want to model how much you can withdraw to spend each year after retirement.
+
+Suppose that, after retirement, your retirement fund continues to grow according to a list of annual growth percentages on investments, while your annual expenses are constant (which, ofcourse is unrealistics as inflation is not zero), called expenses. To see how your retirement fund will change after retirement, we can use the following chart, where we let 'F'
+represent the size of the retirement fund at the time of retirement, and we let 'expenses' represent the amount of money we withdraw in the first year to cover our living costs:
+
+
