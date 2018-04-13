@@ -17,7 +17,7 @@ The program should print out, the size of the retirement account at the end of e
 
 `<Year> <Value of investment> <Annual growth>`
 
-## Part 3:  
+## Part 3: Retirement Expenses 
 Of course, once you retire you will want to be able to withdraw some amount of money each year for living expenses. You can use your previous code to get the size of your retirement fund when you stop working. Now we want to model how much you can withdraw to spend each year after retirement.
 
 Suppose that, after retirement, your retirement fund continues to grow according to a list of annual growth percentages on investments, while your annual expenses are constant (which, ofcourse is unrealistics as inflation is not zero). To see how your retirement fund will change after retirement, we can use the following chart, where we let 'F' represent the size of the retirement fund at the time of retirement, and we let `expenses` represent the amount of money we withdraw in the first year to cover our living costs:
@@ -35,3 +35,13 @@ When the program runs it should first calculate the growth of the investment for
 Add the expenses and the number of years of retirement as command line arguments to your code. Don't forget to update the usage instructions.
 
 Note that if the retirement fund balance becomes negative, expenditures should continue to be subtracted, and the growth rate comes to represent the interest rate on the debt (i.e. the formulas in the above table still apply).
+
+## Part 4: Retirement Budget
+Suppose you would like to budget your annual retirement expenses such that by the time you pass on, you will have no retirement funds left (leaving no money for your children). One way to determine what your expense budget should be is to
+try different values of expenses and determine how many years you will be able to be retired before your money runs out. There are several possible strategies one can use for picking different expenses to test, for example:
+* You can start with a low number and progressivelly increase it until your savings = 0 at the end of your retirement.
+* You can start with a high number and progressivelly decrease ...
+* or you can try [binary search](https://en.wikipedia.org/wiki/Binary_search_algorithm).
+
+Modify the code so that if the user leaves out the `expense` command line argument the program automatically calculates the maxium amout of expenses for a given length of retirement.
+
