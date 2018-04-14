@@ -55,3 +55,5 @@ Modify the code so that if the user leaves out the `expense` command line argume
 
 ## Part 5: Wrapper Script
 Your code is now complete. In order to run your program a number of command line arguments have to be passes to the program. While this is an easy and efficient method for passing arguments to a program it is not particulaly user friendly. In this part you will create a wrapper script using Bash Shell script to simplify the usage of your program. Your script should have the same name as your java program but with the addition of a `.sh` suffix. WHen invoked the shell script should ask the user questions whose answer will be used for the command line arguments of the java program. Once the ser as answered all the require questions the script should launch the java program automatically. 
+
+There are many online resources for bash scripting, one recommened on is the following tutorial https://ryanstutorials.net/bash-scripting-tutorial/. In the classromm library there are also good old fashioned books on shell scripting that you are free to use.
