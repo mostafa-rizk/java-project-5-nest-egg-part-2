@@ -25,6 +25,8 @@ The program should print out, the size of the retirement account at the end of e
 
 `<Year> <Value of investment> <Annual growth>`
 
+See page 24-2 in the [BPJT](https://drive.google.com/file/d/1khkhu3q0Rbj6VumUkwz1lBz6oSWMF_XH/view?usp=sharing) for how to read in text files in Java.
+
 ## Part 3: Retirement Expenses 
 Create a branch called `expenses` and do Part 3 in this branch. Once Part 3 is complete merge the branch with the `master`.
 
