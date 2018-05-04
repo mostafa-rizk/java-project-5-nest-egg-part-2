@@ -3,8 +3,8 @@ import java.util.*;
 public class nestEgg {
    public static void main(String args[]) {
       Scanner kbReader = new Scanner(System.in);
-      double salary, save, growth, inflation, fund = 0; //Declaring all variables
-      int years;
+      double salary = 0, save = 0, growth = 0, inflation, fund = 0; //Declaring all variables
+      int years = 0;
       if (args.length != 4) { //Checking there are 4 arguments
          System.out.println("Proper usage: java nestEgg <salary> <save%> <growth%> <yearsToRetirement>");
          System.exit(0);
@@ -13,13 +13,13 @@ public class nestEgg {
          salary = Double.parseDouble(args[0]);
          save = Double.parseDouble(args[1]);
          growth = Double.parseDouble(args[2]);
-         years = Double.parseDouble(args[3]);
+         years = Integer.parseInt(args[3]);
       }
       catch (Exception e) {
          System.out.println("All command line arguments must be numbers");
          System.exit(0);
       }
-      if (salary <= 0 || save <= 0 || growth <= 0 || yeas <= 0) { //Checking that all numbers are > 0
+      if (salary <= 0 || save <= 0 || growth <= 0 || years <= 0) { //Checking that all numbers are > 0
          System.out.println("All inputs must be larger than 0");
          System.exit(0);
       }
@@ -38,6 +38,7 @@ public class nestEgg {
             inflation = 0;
             System.out.println("   Your salary will not grow with inflation.");
          }
+      }
       catch (Exception e) {
          inflation = 0;
          System.out.println("   Your salary will not grow with inflation.");
@@ -47,6 +48,6 @@ public class nestEgg {
          fund = fund * (1 + 0.01 * growth) + salary *save * 0.01; //Calculation for determining retirement fund
          salary = salary * (1 + inflation); //Calculation for determining salary with inflation
       }
-      System.out.printf("By the end of " + years + " years, your retirement fund will be $" + "%.2f.\n", fund);
+      System.out.printf("By the end of %d years, your retirement fund will be $%.2f.\n", years, fund);
    }
 }
