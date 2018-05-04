@@ -5,41 +5,27 @@ public class nestEgg {
       Scanner kbReader = new Scanner(System.in);
       double salary, save, growth, inflation, fund = 0; //Declaring all variables
       int years;
-      try { //Tries to run section of program and catches exceptions (ex. InputMismatch)
-         salary = kbReader.nextDouble();
-         if (salary <= 0) {
-            
-         }
+      if (args.length != 4) { //Checking there are 4 arguments
+         System.out.println("Proper usage: java nestEgg <salary> <save%> <growth%> <yearsToRetirement>");
+         System.exit(0);
       }
-      catch (Exception e) { //If there is an exception then it assigns default values instead of halting program
-         
-      }
-      try { //Assigning value to save
-         save = kbReader.nextDouble();
-         if (save <= 0 || save >= 100) {
-            
-         }
+      try { //Making sure all arguments are numbers
+         salary = Double.parseDouble(args[0]);
+         save = Double.parseDouble(args[1]);
+         growth = Double.parseDouble(args[2]);
+         years = Double.parseDouble(args[3]);
       }
       catch (Exception e) {
-         
+         System.out.println("All command line arguments must be numbers");
+         System.exit(0);
       }
-      try { //Assigning value to growth rate (interest) of fund
-         growth = kbReader.nextDouble();
-         if (growth <= 0 || growth >= 100) {
-            
-         }
+      if (salary <= 0 || save <= 0 || growth <= 0 || yeas <= 0) { //Checking that all numbers are > 0
+         System.out.println("All inputs must be larger than 0");
+         System.exit(0);
       }
-      catch (Exception e) {
-         
-      }
-      try { //Assigning value to number of years until retirement
-         System.out.print("How long until retirement? ");
-         years = kbReader.nextInt();
-         if (years <= 0) {
-            
-         }
-      catch (Exception e) {
-         
+      if (save >= 100 || growth >= 100) { //Checking that save and growth are < 100
+         System.out.println("Save and growth cannot be >= 100");
+         System.exit(0);
       }
       try { //Determining whether inflation should be used
          System.out.print("Do you want your salary to grow with inflation? (Y/N) ");
