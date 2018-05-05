@@ -1,10 +1,12 @@
 import java.io.*;
 import java.util.*;
 public class nestEgg {
-   public static void main(String args[]) {
+   public static void main(String args[]) throws IOException {
       Scanner kbReader = new Scanner(System.in);
+      Scanner fileReader = new Scanner(new File("growthRate.txt"));
       double salary = 0, save = 0, growth = 0, inflation, fund = 0; //Declaring all variables
-      int years = 0;
+      int years = 0, maxIndex = -1;
+      String[] varGrowth = new String[60];
       if (args.length != 4) { //Checking there are 4 arguments
          System.out.println("Proper usage: java nestEgg <salary> <save%> <growth%> <yearsToRetirement>");
          System.exit(0);
@@ -18,6 +20,10 @@ public class nestEgg {
       catch (Exception e) {
          System.out.println("All command line arguments must be numbers");
          System.exit(0);
+      }
+      while (fileReader.hasNext()) {
+         maxIndex++;
+         varGrowth[maxIndex] = fileReader.nextLine();
       }
       if (salary <= 0 || save <= 0 || growth <= 0 || years <= 0) { //Checking that all numbers are > 0
          System.out.println("All inputs must be larger than 0");
