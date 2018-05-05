@@ -23,8 +23,10 @@ public class nestEgg {
       }
       while (fileReader.hasNext()) {
          maxIndex++;
-         varGrowth[maxIndex] = fileReader.nextLine();
+         fileReader.next();
+         varGrowth[maxIndex] = fileReader.next();
       }
+      fileReader.close();
       if (salary <= 0 || save <= 0 || growth <= 0 || years <= 0) { //Checking that all numbers are > 0
          System.out.println("All inputs must be larger than 0");
          System.exit(0);
