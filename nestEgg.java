@@ -31,7 +31,7 @@ public static final String RED = "\u001b[31;1m";
          System.out.println("All command line arguments must be numbers");
          System.exit(0);
       }
-      if (salary <= 0 || save <= 0 || yearsA <= 0 || yearsB <= 0) { //Checking that inputs are larger than 0
+      if (salary <= 0 || save <= 0 || yearsA <= 0 || yearsB <= 0 || expenses < 0) { //Checking that inputs are larger than 0
          System.out.println("All inputs must be larger than 0");
          System.exit(0);
       }
