@@ -15,7 +15,7 @@ public static final String RED = "\u001b[31;1m";
       varGrowth[0] = 0;
       if (args.length < 4) { //Checking there are minumum 4 arguments
          System.out.println("Proper usage: java nestEgg <salary> <save%> <yearsToRetirement> " +
-         "<yearsOfRetirement> <expenses>");
+         "<yearsOfRetirement> [expenses]");
          System.exit(0);
       }
       try { //Making sure all arguments are numbers
