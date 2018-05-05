@@ -8,17 +8,19 @@ public class nestEgg {
       int yearsA = 0, yearsB = 0, maxIndex = 0;
       double[] varGrowth = new double[61];
       varGrowth[0] = 0;
-      if (args.length != 5) { //Checking there are 5 arguments
+      if (args.length < 4) { //Checking there are minumum 4 arguments
          System.out.println("Proper usage: java nestEgg <salary> <save%> <yearsToRetirement> " +
-         "<expenses> <yearsOfRetirement>");
+         "<yearsOfRetirement> <expenses>");
          System.exit(0);
       }
       try { //Making sure all arguments are numbers
          salary = Double.parseDouble(args[0]);
          save = Double.parseDouble(args[1]);
-         yearsA = Integer.parseInt(args[2]);
-         expenses = Double.parseDouble(args[3]);
-         yearsB = Integer.parseInt(args[4]);
+         yearsA = Integer.parseInt(args[2])
+         yearsB = Integer.parseInt(args[3]);
+         if (args.length > 4) {
+            expenses = Double.parseDouble(args[4]);
+         }
       }
       catch (Exception e) {
          System.out.println("All command line arguments must be numbers");
@@ -68,7 +70,7 @@ public class nestEgg {
          }
          System.out.printf("Year %d: $%,.2f , %f\n", i, fund, varGrowth[i-1] - varGrowth[i-2]);
       }
-      for (int i = 1; i <= yearsB; i++) {
+      for (int i = 1; i <= yearsB; i++) { //Deducting expenses after calculating new fund size each year
          fund = fund * (1 + 0.01 * varGrowth[i-1]) - expenses;
          System.out.printf("Year %d: $%,.2f\n", i, fund);
       }
