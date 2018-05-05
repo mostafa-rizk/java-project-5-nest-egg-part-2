@@ -37,7 +37,7 @@ public class nestEgg {
       }
       fileReader.close();
       if (years > varGrowth.length) { //Checking that program runs for length <= number of growth rates
-         System.out.print("Years until retirement cannot be higher than 61");
+         System.out.println("Years until retirement cannot be higher than 61");
          System.exit(0);
       }
       try { //Determining whether inflation should be used
@@ -60,7 +60,12 @@ public class nestEgg {
       for (int i = 1; i <= years; i++) { //Iterative loop that runs for number of years until retirement
          fund = fund * (1 + 0.01 * varGrowth[i-1]) + salary *save * 0.01; //Calculation for determining retirement fund
          salary = salary * (1 + inflation); //Calculation for determining salary with inflation
+         if (i < 2) {
+            System.out.printf("Year %d: $%,.2f\n", i, fund);
+            continue ;
+         }
+         System.out.printf("Year %d: $%,.2f , %f\n", i, fund, varGrowth[i-1] - varGrowth[i-2]);
       }
-      System.out.printf("By the end of %d years, your retirement fund will be $%.2f.\n", years, fund);
+      System.out.printf("By the end of %d years, your retirement fund will be $%,.2f.\n", years, fund);
    }
 }
