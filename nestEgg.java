@@ -72,12 +72,12 @@ public class nestEgg {
       }
       if (expenses == 0) {
          double low = salary / 100, high = fund, withinRange = 100, testFund = fund;
-         expenses = (low + high) / 2;
          while (Math.abs(testFund) > withinRange) {
             testFund = fund;
+            expenses = (low + high) / 2;
             for (int i = 1; i <= yearsB; i++) {
                testFund = testFund * (1 + 0.01 * varGrowth[i-1]) - expenses;
-               //System.out.printf("Year %d: $%,.2f\n", i, testFund);
+               System.out.printf("Year %d: %f $%,.2f\n", i, expenses, testFund);
             }
             if (testFund > withinRange) {
                low = expenses;
@@ -85,7 +85,6 @@ public class nestEgg {
             else {
                high = expenses;
             }
-            expenses = (low + high) / 2;
          }
       }
       for (int i = 1; i <= yearsB; i++) { //Deducting expenses after calculating new fund size each year
