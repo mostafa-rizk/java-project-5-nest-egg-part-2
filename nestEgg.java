@@ -16,7 +16,7 @@ public class nestEgg {
       try { //Making sure all arguments are numbers
          salary = Double.parseDouble(args[0]);
          save = Double.parseDouble(args[1]);
-         yearsA = Integer.parseInt(args[2])
+         yearsA = Integer.parseInt(args[2]);
          yearsB = Integer.parseInt(args[3]);
          if (args.length > 4) {
             expenses = Double.parseDouble(args[4]);
@@ -26,8 +26,8 @@ public class nestEgg {
          System.out.println("All command line arguments must be numbers");
          System.exit(0);
       }
-      if (salary <= 0 || save <= 0 || yearsA <= 0 || expenses <= 0 || yearsB <= 0) {
-         System.out.println("All inputs must be larger than 0"); //Checking that inputs are larger than 0
+      if (salary <= 0 || save <= 0 || yearsA <= 0 || yearsB <= 0) { //Checking that inputs are larger than 0
+         System.out.println("All inputs must be larger than 0");
          System.exit(0);
       }
       if (save >= 100) { //Checking that save and growth are < 100
@@ -70,10 +70,27 @@ public class nestEgg {
          }
          System.out.printf("Year %d: $%,.2f , %f\n", i, fund, varGrowth[i-1] - varGrowth[i-2]);
       }
+      if (expenses == 0) {
+         double low = salary / 100, high = fund, withinRange = 100, testFund = fund;
+         expenses = (low + high) / 2;
+         while (Math.abs(testFund) > withinRange) {
+            testFund = fund;
+            for (int i = 1; i <= yearsB; i++) {
+               testFund = testFund * (1 + 0.01 * varGrowth[i-1]) - expenses;
+               //System.out.printf("Year %d: $%,.2f\n", i, testFund);
+            }
+            if (testFund > withinRange) {
+               low = expenses;
+            }
+            else {
+               high = expenses;
+            }
+            expenses = (low + high) / 2;
+         }
+      }
       for (int i = 1; i <= yearsB; i++) { //Deducting expenses after calculating new fund size each year
          fund = fund * (1 + 0.01 * varGrowth[i-1]) - expenses;
          System.out.printf("Year %d: $%,.2f\n", i, fund);
       }
-      //System.out.printf("By the end of %d years, your retirement fund will be $%,.2f.\n", yearsA, fund);
    }
 }
