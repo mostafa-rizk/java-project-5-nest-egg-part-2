@@ -62,7 +62,7 @@ public class nestEgg {
          kbReader.next();
       }
       for (int i = 1; i <= yearsA; i++) { //Iterative loop that runs for number of years until retirement
-         fund = fund * (1 + 0.01 * varGrowth[i-1]) + salary *save * 0.01; //Calculation for determining retirement fund
+         fund = fund * (1 + 0.01 * varGrowth[i-1]) + salary *save * 0.01; //Determining retirement fund
          salary = salary * (1 + inflation); //Calculation for determining salary with inflation
          if (i < 2) {
             System.out.printf("Year %d: $%,.2f\n", i, fund);
@@ -70,14 +70,13 @@ public class nestEgg {
          }
          System.out.printf("Year %d: $%,.2f , %f\n", i, fund, varGrowth[i-1] - varGrowth[i-2]);
       }
-      if (expenses == 0) {
+      if (expenses == 0) { //Checks if expenses wasn't input, if so then uses binary search to get 0 <= funds <= 100
          double low = salary / 100, high = fund, withinRange = 100, testFund = fund;
-         while (Math.abs(testFund) > withinRange) {
+         while (testFund > withinRange || testFund < 0) {
             testFund = fund;
             expenses = (low + high) / 2;
             for (int i = 1; i <= yearsB; i++) {
                testFund = testFund * (1 + 0.01 * varGrowth[i-1]) - expenses;
-               System.out.printf("Year %d: %f $%,.2f\n", i, expenses, testFund);
             }
             if (testFund > withinRange) {
                low = expenses;
