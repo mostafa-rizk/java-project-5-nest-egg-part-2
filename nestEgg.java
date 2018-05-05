@@ -24,12 +24,12 @@ public class nestEgg {
          System.out.println("All command line arguments must be numbers");
          System.exit(0);
       }
-      if (salary <= 0 || save <= 0 || growth <= 0 || yearsA <= 0 || expenses <= 0 || yearsB <= 0) {
+      if (salary <= 0 || save <= 0 || yearsA <= 0 || expenses <= 0 || yearsB <= 0) {
          System.out.println("All inputs must be larger than 0"); //Checking that inputs are larger than 0
          System.exit(0);
       }
-      if (save >= 100 || growth >= 100) { //Checking that save and growth are < 100
-         System.out.println("Save and growth cannot be >= 100");
+      if (save >= 100) { //Checking that save and growth are < 100
+         System.out.println("Save cannot be >= 100");
          System.exit(0);
       }
       while (fileReader.hasNext()) { //Copying each growth rate into array
@@ -68,6 +68,10 @@ public class nestEgg {
          }
          System.out.printf("Year %d: $%,.2f , %f\n", i, fund, varGrowth[i-1] - varGrowth[i-2]);
       }
-      System.out.printf("By the end of %d years, your retirement fund will be $%,.2f.\n", yearsA, fund);
+      for (int i = 1; i <= yearsB; i++) {
+         fund = fund * (1 + 0.01 * varGrowth[i-1]) - expenses;
+         System.out.printf("Year %d: $%,.2f\n", i, fund);
+      }
+      //System.out.printf("By the end of %d years, your retirement fund will be $%,.2f.\n", yearsA, fund);
    }
 }
