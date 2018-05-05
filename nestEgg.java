@@ -21,18 +21,22 @@ public class nestEgg {
          System.out.println("All command line arguments must be numbers");
          System.exit(0);
       }
-      while (fileReader.hasNext()) {
-         maxIndex++;
-         fileReader.next();
-         varGrowth[maxIndex] = fileReader.next();
-      }
-      fileReader.close();
       if (salary <= 0 || save <= 0 || growth <= 0 || years <= 0) { //Checking that all numbers are > 0
          System.out.println("All inputs must be larger than 0");
          System.exit(0);
       }
       if (save >= 100 || growth >= 100) { //Checking that save and growth are < 100
          System.out.println("Save and growth cannot be >= 100");
+         System.exit(0);
+      }
+      while (fileReader.hasNext()) { //Copying each growth rate into array
+         maxIndex++;
+         fileReader.next();
+         varGrowth[maxIndex] = fileReader.next();
+      }
+      fileReader.close();
+      if (years > varGrowth.length) { //Checking that program runs for length <= number of growth rates
+         System.out.print("Years until retirement cannot be higher than 60");
          System.exit(0);
       }
       try { //Determining whether inflation should be used
