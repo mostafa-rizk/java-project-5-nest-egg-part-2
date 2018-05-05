@@ -1,6 +1,11 @@
 import java.io.*;
 import java.util.*;
 public class nestEgg {
+public static final String RED = "\u001b[31;1m";
+   public static final String BLUE = "\u001b[34;1m";
+   public static final String GREEN = "\u001b[32;1m";
+   public static final String ORANGE = "\u001b[38;5;214m";
+   public static final String RESET = "\u001b[0m";
    public static void main(String args[]) throws IOException {
       Scanner kbReader = new Scanner(System.in);
       Scanner fileReader = new Scanner(new File("growthRate.txt"));
@@ -65,10 +70,17 @@ public class nestEgg {
          fund = fund * (1 + 0.01 * varGrowth[i-1]) + salary *save * 0.01; //Determining retirement fund
          salary = salary * (1 + inflation); //Calculation for determining salary with inflation
          if (i < 2) {
-            System.out.printf("Year %d: $%,.2f\n", i, fund);
+            System.out.printf(BLUE + "Year %d: " + RESET + "$%,.2f\n", i, fund);
             continue ;
          }
-         System.out.printf("Year %d: $%,.2f , %f\n", i, fund, varGrowth[i-1] - varGrowth[i-2]);
+         if (varGrowth[i-1] - varGrowth[i-2] > 0) {
+            System.out.printf(BLUE + "Year %d: " + RESET + "$%,.2f , " + GREEN + "%f\n",
+            i, fund, varGrowth[i-1] - varGrowth[i-2]);
+         }
+         else {
+            System.out.printf(BLUE + "Year %d: " + RESET + "$%,.2f , " + RED + "%f\n",
+            i, fund, varGrowth[i-1] - varGrowth[i-2]);
+         }
       }
       if (expenses == 0) { //Checks if expenses wasn't input, if so then uses binary search to get 0 <= funds <= 100
          double low = salary / 100, high = fund, withinRange = 100, testFund = fund;
@@ -88,7 +100,7 @@ public class nestEgg {
       }
       for (int i = 1; i <= yearsB; i++) { //Deducting expenses after calculating new fund size each year
          fund = fund * (1 + 0.01 * varGrowth[i-1]) - expenses;
-         System.out.printf("Year %d: $%,.2f\n", i, fund);
+         System.out.printf(ORANGE + "Year %d: " + RESET + "$%,.2f\n", i, fund);
       }
    }
 }
