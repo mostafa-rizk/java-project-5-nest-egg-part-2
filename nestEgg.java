@@ -5,8 +5,9 @@ public class nestEgg {
       Scanner kbReader = new Scanner(System.in);
       Scanner fileReader = new Scanner(new File("growthRate.txt"));
       double salary = 0, save = 0, growth = 0, inflation, fund = 0; //Declaring all variables
-      int years = 0, maxIndex = -1;
-      String[] varGrowth = new String[60];
+      int years = 0, maxIndex = 0;
+      double[] varGrowth = new double[61];
+      varGrowth[0] = 0;
       if (args.length != 4) { //Checking there are 4 arguments
          System.out.println("Proper usage: java nestEgg <salary> <save%> <growth%> <yearsToRetirement>");
          System.exit(0);
@@ -32,11 +33,11 @@ public class nestEgg {
       while (fileReader.hasNext()) { //Copying each growth rate into array
          maxIndex++;
          fileReader.next();
-         varGrowth[maxIndex] = fileReader.next();
+         varGrowth[maxIndex] = Double.parseDouble(fileReader.next());
       }
       fileReader.close();
       if (years > varGrowth.length) { //Checking that program runs for length <= number of growth rates
-         System.out.print("Years until retirement cannot be higher than 60");
+         System.out.print("Years until retirement cannot be higher than 61");
          System.exit(0);
       }
       try { //Determining whether inflation should be used
@@ -57,7 +58,7 @@ public class nestEgg {
          kbReader.next();
       }
       for (int i = 1; i <= years; i++) { //Iterative loop that runs for number of years until retirement
-         fund = fund * (1 + 0.01 * growth) + salary *save * 0.01; //Calculation for determining retirement fund
+         fund = fund * (1 + 0.01 * varGrowth[i-1]) + salary *save * 0.01; //Calculation for determining retirement fund
          salary = salary * (1 + inflation); //Calculation for determining salary with inflation
       }
       System.out.printf("By the end of %d years, your retirement fund will be $%.2f.\n", years, fund);
